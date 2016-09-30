@@ -97,6 +97,17 @@
 
         <hr class="margin-top">
 
+        <h3>Display Chapter Indexes</h3>
+        <div class="row">
+            <p class="small">This option enables or disables counters for chapters and pages.</p>
+            <div class="form-group">
+                <label>Display indexes for chapters and pages?</label>
+                <div selected toggle-switch name="setting-display-indexes" value="{{ setting('display-indexes') }}"></div>
+            </div>
+        </div>
+
+        <hr class="margin-top">
+
         <div class="form-group">
             <span class="float right muted">
                 BookStack @if(strpos($version, 'v') !== 0) version @endif {{ $version }}
