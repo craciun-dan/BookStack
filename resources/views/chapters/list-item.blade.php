@@ -7,9 +7,10 @@
             <span class="text-muted">&nbsp;&nbsp;&raquo;&nbsp;&nbsp;</span>
         @endif
         <a href="{{ $chapter->getUrl() }}" class="text-chapter entity-list-item-link">
-            <i class="zmdi zmdi-collection-bookmark"></i><span class="entity-list-item-name">{{ $chapter->name }}</span>
+            <i class="zmdi zmdi-collection-bookmark"></i><span class="entity-list-item-name">@if(setting('display-indexes')) {{$chapter->getNumber()}} {{$chapter->name}} @else {{$chapter->name}} @endif</span>
         </a>
     </h3>
+
     @if(isset($chapter->searchSnippet))
         <p class="text-muted">{!! $chapter->searchSnippet !!}</p>
     @else
@@ -20,7 +21,7 @@
         <p class="text-muted chapter-toggle"><i class="zmdi zmdi-caret-right"></i> <i class="zmdi zmdi-file-text"></i> <span>{{ count($chapter->pages) }} Pages</span></p>
         <div class="inset-list">
             @foreach($chapter->pages as $page)
-                <h4 class="@if($page->draft) draft @endif"><a href="{{ $page->getUrl() }}" class="text-page @if($page->draft) draft @endif"><i class="zmdi zmdi-file-text"></i>{{$page->name}}</a></h4>
+                <h4 class="@if($page->draft) draft @endif"><a href="{{ $page->getUrl() }}" class="text-page @if($page->draft) draft @endif"><i class="zmdi zmdi-file-text"></i> @if(setting('display-indexes')) {{$page->getNumber()}} {{$page->name}} @else {{$page->name}} @endif </a></h4>
             @endforeach
         </div>
     @endif

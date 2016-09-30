@@ -83,4 +83,25 @@ class Page extends Entity
         return mb_convert_encoding($text, 'UTF-8');
     }
 
+    public function getNumber() {
+        $i = 0;
+        if (count($this->book->chapters) > 0) {
+            foreach($this->book->chapters as $currentChapter) {
+                $i++;
+                if ($currentChapter->id == $this->chapter->id) {
+                    $j = 0;
+                    if (count($this->chapter->pages) > 0) {
+                        foreach($this->chapter->pages as $currentPage) {
+                            $j++;
+                            if ($currentPage->id == $this->id) {
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        return $i . "." . $j . ". ";
+    }
 }

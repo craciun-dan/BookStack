@@ -48,4 +48,17 @@ class Chapter extends Entity
         return strlen($description) > $length ? substr($description, 0, $length-3) . '...' : $description;
     }
 
+    public function getNumber() {
+        $i = 0;
+        if (count($this->book->chapters) > 0) {
+            foreach($this->book->chapters as $currentChapter) {
+                $i++;
+                if ($currentChapter->id == $this->id) {
+                    break;
+                }
+            }
+        }
+        return $i . ". ";
+    }
+
 }

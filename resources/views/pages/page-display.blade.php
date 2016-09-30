@@ -1,6 +1,6 @@
 <div ng-non-bindable>
 
-    <h1 id="bkmrk-page-title" class="float left">{{$page->name}}</h1>
+    <h1 id="bkmrk-page-title" class="float left">@if(setting('display-indexes')) {{ $page->getNumber() }} {{ $page->name }} @else {{ $page->name }} @endif</h1>
 
     @if(count($page->tags) > 0)
         <div class="tag-display float right">
